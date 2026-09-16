@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Abdulla_Nurdaulet_SE2516.iml" filepath="$PROJECT_DIR$/Abdulla_Nurdaulet_SE2516.iml" />
+      <module fileurl="file://$PROJECT_DIR$/junit-jupiter.iml" filepath="$PROJECT_DIR$/junit-jupiter.iml" />
     </modules>
   </component>
 </project>

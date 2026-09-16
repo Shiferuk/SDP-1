@@ -1,79 +1,79 @@
-package main.java.builder;
+package builder;
 
 public class ComputerConfiguration {
-    private final String CPU;
-    private final String MotherBoard;
-    private final String PowerSupply;
-    private final int RAM;
+    private final CpuSpecs cpu;
+    private final String motherBoard;
+    private final String powerSupply;
+    private final int ram;
     private final int storage;
 
-    private final String GPU;
+    private final String gpu;
     private final boolean wifi;
     private final boolean bluetooth;
     private final boolean webcam;
-    private final String OperatingSystem;
-    private final String CoolingType;
+    private final String operatingSystem;
+    private final String coolingType;
 
     private ComputerConfiguration(Builder b) {
-        this.CPU = b.CPU;
-        this.MotherBoard = b.MotherBoard;
-        this.PowerSupply = b.PowerSupply;
-        this.RAM = b.RAM;
+        this.cpu = b.cpu;
+        this.motherBoard = b.motherBoard;
+        this.powerSupply = b.powerSupply;
+        this.ram = b.ram;
         this.storage = b.storage;
-        this.GPU = b.GPU;
+        this.gpu = b.gpu;
         this.wifi = b.wifi;
         this.bluetooth = b.bluetooth;
         this.webcam = b.webcam;
-        this.OperatingSystem = b.OperatingSystem;
-        this.CoolingType = b.CoolingType;
+        this.operatingSystem = b.operatingSystem;
+        this.coolingType = b.coolingType;
     }
 
-    public String getCPU() { return CPU; }
-    public String getMotherBoard() { return MotherBoard; }
-    public String getPowerSupply() { return PowerSupply; }
-    public int getRAM() { return RAM; }
+    public CpuSpecs getCpu() { return cpu; }
+    public String getMotherBoard() { return motherBoard; }
+    public String getPowerSupply() { return powerSupply; }
+    public int getRam() { return ram; }
     public int getStorage() { return storage; }
 
+    @Override
+    public String toString() {
+        return "ComputerConfiguration{" +
+                ", processor='" + cpu + '\'' +
+                ", motherboard=" + motherBoard +
+                ", powersupply=" + powerSupply +
+                ", ramGb=" + ram +
+                ", storage=" + storage +
+                ", graphicsCard='" + gpu + '\'' +
+                ", wifi=" + wifi +
+                ", bluetooth=" + bluetooth +
+                ", webcam=" + webcam +
+                ", operatingSystem=" + operatingSystem +
+                ", coolingType=" + coolingType + '}';
+    }
+
     public static class Builder {
-        private final String CPU;
-        private final String MotherBoard;
-        private final String PowerSupply;
-        private final int RAM;
+        private final CpuSpecs cpu;
+        private final String motherBoard;
+        private final String powerSupply;
+        private final int ram;
         private final int storage;
 
-        private String GPU = "NVIDIA GeForce RTX 5090";
+        private String gpu = "NVIDIA GeForce RTX 5090";
         private boolean wifi = true;
         private boolean bluetooth = false;
         private boolean webcam = false;
-        private String OperatingSystem = "Windows 11 pro";
-        private String CoolingType = "Air Cooling";
+        private String operatingSystem = "Windows 11 pro";
+        private String coolingType = "Air Cooling";
 
-        @Override
-        public String toString() {
-            return "ComputerConfiguration{" +
-                    ", processor='" + CPU + '\'' +
-                    ", motherboard=" + MotherBoard +
-                    ", powersupply=" + PowerSupply +
-                    ", ramGb=" + RAM +
-                    ", storage=" + storage +
-                    ", graphicsCard='" + GPU + '\'' +
-                    ", wifi=" + wifi +
-                    ", bluetooth=" + bluetooth +
-                    ", webcam=" + webcam +
-                    ", operatingSystem=" + OperatingSystem +
-                    ", coolingType=" + CoolingType + '}';
-        }
-
-        public Builder(String CPU, String MotherBoard, String PowerSupply, int RAM, int storage) {
-            this.CPU = CPU;
-            this.MotherBoard = MotherBoard;
-            this.PowerSupply = PowerSupply;
-            this.RAM = RAM;
+        public Builder(CpuSpecs cpu, String motherBoard, String powerSupply, int ram, int storage) {
+            this.cpu = cpu;
+            this.motherBoard = motherBoard;
+            this.powerSupply = powerSupply;
+            this.ram = ram;
             this.storage = storage;
         }
 
-        public Builder GPU(String GPU) {
-            this.GPU = GPU;
+        public Builder gpu(String gpu) {
+            this.gpu = gpu;
             return this;
         }
 
@@ -83,22 +83,22 @@ public class ComputerConfiguration {
         }
 
         public Builder enableBluetooth() {
-            this.bluetooth = false;
+            this.bluetooth = true;
             return this;
         }
 
         public Builder enableWebcam() {
-            this.webcam = false;
+            this.webcam = true;
             return this;
         }
 
-        public Builder OperatingSystem(String OperatingSystem) {
-            this.OperatingSystem = OperatingSystem;
+        public Builder operatingSystem(String operatingSystem) {
+            this.operatingSystem = operatingSystem;
             return this;
         }
 
-        public Builder CoolingType(String CoolingType) {
-            this.CoolingType = CoolingType;
+        public Builder coolingType(String coolingType) {
+            this.coolingType = coolingType;
             return this;
         }
 
@@ -111,16 +111,23 @@ public class ComputerConfiguration {
             validateCPU();
             validateRAM();
             validateStorage();
+            if ("Windows 11 pro".equalsIgnoreCase(operatingSystem) && ram < 8) {
+                throw new IllegalStateException("Windows 11 requires at least 8GB RAM");
+            }
+
+            if (gpu != null && gpu.contains("RTX") && "No Cooling".equalsIgnoreCase(coolingType)) {
+                throw new IllegalStateException("RTX Graphics Card requires an adequate Cooling Type");
+            }
         }
 
         private void validateCPU() {
-            if (CPU == null || CPU.isBlank()) {
+            if (cpu == null) {
                 throw new IllegalArgumentException("cpuModel must not be blank");
             }
         }
 
         private void validateRAM() {
-            if (RAM < 0) {
+            if (ram < 0) {
                 throw new IllegalArgumentException("RAM must not be less than zero");
             }
         }

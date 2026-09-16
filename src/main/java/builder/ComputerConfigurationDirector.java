@@ -1,49 +1,36 @@
-package main.java.builder;
+package builder;
 
 public class ComputerConfigurationDirector {
-    public ComputerConfiguration createGaming(String model) {
+
+    public ComputerConfiguration createGaming() {
         return new ComputerConfiguration.Builder(
-                "AMD Ryzen 7 7600X3D",
+                new CpuSpecs("AMD Ryzen 7 7600X3D", 8, 4.1),
                 "B650 Wi-Fi board",
                 "750W 80+ Gold certified",
                 16,
                 1024
-        ).GPU("Nvidia GeForce RTX 5060 (8GB)")
+        ).gpu("Nvidia GeForce RTX 5060 (8GB)")
                 .enableWifi()
                 .enableBluetooth()
                 .enableWebcam()
-                .OperatingSystem("Windows 11 pro")
-                .CoolingType("Standard mid-tower case with an air").build();
+                .operatingSystem("Windows 11 pro")
+                .coolingType("Liquid Cooling")
+                .build();
     }
 
-    public ComputerConfiguration createOffice(String model) {
+    public ComputerConfiguration createOffice() {
         return new ComputerConfiguration.Builder(
-                "Intel Core i3",
+                new CpuSpecs("Intel Core i3-13100", 4, 3.4),
                 "B650 Wi-Fi board",
-                "750W 80+ Gold certified",
+                "450W PSU",
                 8,
                 256
-        ).GPU("Integrated Intel UHD")
+        ).gpu("Integrated Intel UHD")
                 .enableWifi()
                 .enableBluetooth()
                 .enableWebcam()
-                .OperatingSystem("Windows 11")
-                .CoolingType("Standard mid-tower case with an air").build();
-    }
-
-    public ComputerConfiguration createCustom(String model) {
-        return new ComputerConfiguration.Builder(
-                "AMD Ryzen 7 7600X3D",
-                "B650 Wi-Fi board",
-                "750W 80+ Gold certified",
-                16,
-                1024
-        ).GPU("Nvidia GeForce RTX 5060 (8GB)")
-                .enableWifi()
-                .enableBluetooth()
-                .enableWebcam()
-                .OperatingSystem("Windows 11 pro")
-                .CoolingType("Standard mid-tower case with an air").build();
+                .operatingSystem("Windows 11 pro")
+                .coolingType("Air Cooling")
+                .build();
     }
 }
-
