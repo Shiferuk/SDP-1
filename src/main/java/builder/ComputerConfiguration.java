@@ -36,14 +36,14 @@ public class ComputerConfiguration {
 
     @Override
     public String toString() {
-        return "ComputerConfiguration{" +
-                ", processor='" + cpu + '\'' +
-                ", motherboard=" + motherBoard +
+        return "ComputerConfiguration {" +
+                ", processor='" + cpu + '\n' +
+                "motherboard=" + motherBoard +
                 ", powersupply=" + powerSupply +
                 ", ramGb=" + ram +
                 ", storage=" + storage +
-                ", graphicsCard='" + gpu + '\'' +
-                ", wifi=" + wifi +
+                ", graphicsCard='" + gpu + '\n' +
+                "wifi=" + wifi +
                 ", bluetooth=" + bluetooth +
                 ", webcam=" + webcam +
                 ", operatingSystem=" + operatingSystem +
@@ -83,8 +83,8 @@ public class ComputerConfiguration {
 
         private String gpu = "NVIDIA GeForce RTX 5090";
         private boolean wifi = true;
-        private boolean bluetooth = false;
-        private boolean webcam = false;
+        private boolean bluetooth = true;
+        private boolean webcam = true;
         private String operatingSystem = "Windows 11 pro";
         private String coolingType = "Air Cooling";
 
