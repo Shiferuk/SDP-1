@@ -18,7 +18,7 @@ An audit of the submitted codebase (`ComputerConfiguration.java`, `ComputerConfi
 | **Part A - Design Problem** | Document constructor issues | Analyzed: telescoping constructors, parameter order bugs, unclear boolean flags | **PASSED** |
 | **Part B - Refactor to Builder** | Fluent API, method chaining, meaningful defaults | Fluent API implemented (`enableWifi()`, `gpu()`, etc.) | **PASSED** |
 | **Part C - Validation** | 3 single-field rules, 2 cross-field rules | Single: CPU null, RAM > 0, Storage > 0.<br>Cross-field: Win11 RAM >= 8GB, RTX cooling rule | **PASSED** |
-| **Part D - Presets** | 2 substantially different preset configs | Office, Gaming (via Director)| **** |
+| **Part D - Presets** | 3 substantially different preset configs | Office, Gaming (via Director) and Custom| **PASSED** |
 | **Part E - Clean Code** | 3 Before -> After examples applying Ch. 3 principles | Analyzed and documented 3 transformations | **PASSED** |
 | **Part F - Design Decision** | Non-trivial design choice with trade-offs | Evaluated Builder-side vs Product-side validation & Immutability | **PASSED** |
 | **Part G - UML Diagram** | Complete class diagram + traceability table | `UML01.png` provided + Traceability matrix mapped | **PASSED** |
@@ -222,7 +222,7 @@ Validation is executed in the `validate()` method inside `ComputerConfiguration.
 
 The test suite in `ComputerConfigurationTest.java` contains **10 automated tests**:
 
-1. `testValidOfficeConfig`: Verifies basic valid office build & outputs `🍌`.
+1. `testValidOfficeConfig`: Verifies basic valid office build.
 2. `testValidGamingConfig`: Verifies valid gaming PC configuration with liquid cooling.
 3. `testValidCustomConfig`: Verifies custom workstation configuration with all optional flags enabled.
 4. `testInvalidCpuNull`: Ensures `null` CPU throws `IllegalArgumentException`.
@@ -242,5 +242,4 @@ Running `main.java`:
 ```text
 BASIC: ComputerConfiguration{, processor='Intel Core i3-13100 (4 cores @ 3.4GHz)', motherboard=B650 Wi-Fi board, powersupply=450W PSU, ramGb=8, storage=256, graphicsCard='Integrated Intel UHD', wifi=true, bluetooth=true, webcam=true, operatingSystem=Windows 11 pro, coolingType=Air Cooling}
 GAMING: ComputerConfiguration{, processor='AMD Ryzen 7 7600X3D (8 cores @ 4.1GHz)', motherboard=B650 Wi-Fi board, powersupply=750W 80+ Gold certified, ramGb=16, storage=1024, graphicsCard='Nvidia GeForce RTX 5060 (8GB)', wifi=true, bluetooth=true, webcam=true, operatingSystem=Windows 11 pro, coolingType=Liquid Cooling}
-🍌
 ```
