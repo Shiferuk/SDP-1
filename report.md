@@ -18,7 +18,7 @@ An audit of the submitted codebase (`ComputerConfiguration.java`, `ComputerConfi
 | **Part A - Design Problem** | Document constructor issues | Analyzed: telescoping constructors, parameter order bugs, unclear boolean flags | **PASSED** |
 | **Part B - Refactor to Builder** | Fluent API, method chaining, meaningful defaults | Fluent API implemented (`enableWifi()`, `gpu()`, etc.) | **PASSED** |
 | **Part C - Validation** | 3 single-field rules, 2 cross-field rules | Single: CPU null, RAM > 0, Storage > 0.<br>Cross-field: Win11 RAM >= 8GB, RTX cooling rule | **PASSED** |
-| **Part D - Presets** | 3 substantially different preset configs | Office, Gaming (via Director), Custom Workstation (via Test) | **PASSED** |
+| **Part D - Presets** | 2 substantially different preset configs | Office, Gaming (via Director)| **** |
 | **Part E - Clean Code** | 3 Before -> After examples applying Ch. 3 principles | Analyzed and documented 3 transformations | **PASSED** |
 | **Part F - Design Decision** | Non-trivial design choice with trade-offs | Evaluated Builder-side vs Product-side validation & Immutability | **PASSED** |
 | **Part G - UML Diagram** | Complete class diagram + traceability table | `UML01.png` provided + Traceability matrix mapped | **PASSED** |
@@ -96,7 +96,6 @@ ComputerConfiguration config = new ComputerConfiguration.Builder(
 The `ComputerConfigurationDirector` class encapsulates pre-defined construction steps:
 * **Office PC:** Low-power CPU, integrated graphics, 8GB RAM, 256GB storage, air cooling.
 * **Gaming PC:** High-performance Ryzen CPU, RTX graphics card, 16GB RAM, 1024GB storage, liquid cooling.
-* **Workstation PC:** Flagship Core i9 CPU, RTX 4090, 32GB RAM, 2TB storage.
 
 ---
 
