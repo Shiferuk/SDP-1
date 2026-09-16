@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ComputerConfigurationTest {
     @Test
-    @DisplayName("Valid scenario 1: Build basic Office PC and print 🍌")
+    @DisplayName("Valid scenario 1: Build basic Office PC")
     void testValidOfficeConfig() {
         CpuSpecs cpu = new CpuSpecs("Intel Core i3-13100", 4, 3.4);
         ComputerConfiguration config = new ComputerConfiguration.Builder(cpu, "B650 Board", "450W PSU", 8, 256)
@@ -21,7 +21,6 @@ class ComputerConfigurationTest {
         assertEquals(8, config.getRam());
 
         System.out.println("Successfully built configuration: " + config);
-        System.out.println("🍌");
     }
 
     @Test

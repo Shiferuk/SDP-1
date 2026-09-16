@@ -9,6 +9,5 @@ public class main {
 
         System.out.println("BASIC: " + basic);
         System.out.println("GAMING: " + gaming);
-        System.out.println("🍌");
     }
 }
