@@ -50,6 +50,30 @@ public class ComputerConfiguration {
                 ", coolingType=" + coolingType + '}';
     }
 
+    public String getGpu() {
+        return gpu;
+    }
+
+    public String getCoolingType() {
+        return coolingType;
+    }
+
+    public boolean isWifi() {
+        return wifi;
+    }
+
+    public boolean isBluetooth() {
+        return bluetooth;
+    }
+
+    public boolean isWebcam() {
+        return webcam;
+    }
+
+    public String getOperatingSystem() {
+        return operatingSystem;
+    }
+
     public static class Builder {
         private final CpuSpecs cpu;
         private final String motherBoard;
@@ -108,33 +132,22 @@ public class ComputerConfiguration {
         }
 
         private void validate() {
-            validateCPU();
-            validateRAM();
-            validateStorage();
+            if (cpu == null) {
+                throw new IllegalArgumentException("CPU must not be null");
+            }
+            if (ram <= 0) {
+                throw new IllegalArgumentException("RAM must be greater than zero");
+            }
+            if (storage <= 0) {
+                throw new IllegalArgumentException("Storage must be greater than zero");
+            }
+
             if ("Windows 11 pro".equalsIgnoreCase(operatingSystem) && ram < 8) {
                 throw new IllegalStateException("Windows 11 requires at least 8GB RAM");
             }
 
             if (gpu != null && gpu.contains("RTX") && "No Cooling".equalsIgnoreCase(coolingType)) {
                 throw new IllegalStateException("RTX Graphics Card requires an adequate Cooling Type");
-            }
-        }
-
-        private void validateCPU() {
-            if (cpu == null) {
-                throw new IllegalArgumentException("cpuModel must not be blank");
-            }
-        }
-
-        private void validateRAM() {
-            if (ram < 0) {
-                throw new IllegalArgumentException("RAM must not be less than zero");
-            }
-        }
-
-        private void validateStorage() {
-            if (storage < 0) {
-                throw new IllegalArgumentException("Storage must not be less than zero");
             }
         }
     }
