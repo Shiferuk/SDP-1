@@ -56,7 +56,7 @@ assignment-1-builder/
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/abdulla-nurdaulet/assignment-1-builder.git
+   git clone https://https://github.com/Shiferuk/SDP-1.git
    cd assignment-1-builder
    ```
 

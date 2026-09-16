@@ -22,7 +22,7 @@ An audit of the submitted codebase (`ComputerConfiguration.java`, `ComputerConfi
 | **Part E - Clean Code** | 3 Before -> After examples applying Ch. 3 principles | Analyzed and documented 3 transformations | **PASSED** |
 | **Part F - Design Decision** | Non-trivial design choice with trade-offs | Evaluated Builder-side vs Product-side validation & Immutability | **PASSED** |
 | **Part G - UML Diagram** | Complete class diagram + traceability table | `UML01.png` provided + Traceability matrix mapped | **PASSED** |
-| **Part H - Testing** | 10+ tests (3 valid, 3 invalid, 2 boundary, 1 constraint, 1 reuse) + 🍌 symbol | 10 JUnit 5 test cases passing + 🍌 printed in main and test | **PASSED** |
+| **Part H - Testing** | 10+ tests (3 valid, 3 invalid, 2 boundary, 1 constraint, 1 reuse) | 10 JUnit 5 test cases passing | **PASSED** |
 
 ---
 
