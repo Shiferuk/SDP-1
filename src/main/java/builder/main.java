@@ -6,8 +6,10 @@ public class main {
 
         ComputerConfiguration basic = director.createOffice();
         ComputerConfiguration gaming = director.createGaming();
+        ComputerConfiguration customForHome = director.createCustom();
 
         System.out.println("BASIC: " + basic);
         System.out.println("GAMING: " + gaming);
+        System.out.println("Custom: " + customForHome);
     }
 }
