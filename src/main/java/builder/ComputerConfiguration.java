@@ -112,7 +112,7 @@ public class ComputerConfiguration {
         }
 
         public Builder enableWebcam() {
-            this.webcam = true;
+            this.webcam = false;
             return this;
         }
 

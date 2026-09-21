@@ -77,4 +77,3 @@ assignment-1-builder/
 * **Properties**: 11 total properties (5 required, 6 optional).
 * **Value Object**: `CpuSpecs` (model, cores, clockSpeedGhz).
 * **Presets**: Office, Gaming, and Workstation configurations via Director / Builder.
-* **Test Output**: Prints 🍌 upon successfully building designated configurations.
